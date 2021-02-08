@@ -85,3 +85,6 @@ father(X):-father(Y,X),write(Y).
 brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y),!.
 brother_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
 brothers(X):-brother_for_all(Y,X),write(Y),write(","),fail.
+sister(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y),!.
+sister_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y).
+sisters(X):-sister_for_all(Y,X),write(Y),write(","),fail.
