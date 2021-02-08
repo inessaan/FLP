@@ -82,3 +82,6 @@ mother(X,Y):-parent(X,Y),woman(X).
 mother(X):-mother(Y,X),write(Y).
 father(X,Y):-parent(X,Y),man(X),!.
 father(X):-father(Y,X),write(Y).
+brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y),!.
+brother_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
+brothers(X):-brother_for_all(Y,X),write(Y),write(","),fail.
