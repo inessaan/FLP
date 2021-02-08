@@ -80,5 +80,5 @@ children(X,Y):-parent(Y,X).
 allchildren(Y):-children(X,Y),write(X),write(","),fail.
 mother(X,Y):-parent(X,Y),woman(X).
 mother(X):-mother(Y,X),write(Y).
-father(X,Y):-parent(X,Y),man(X).
+father(X,Y):-parent(X,Y),man(X),!.
 father(X):-father(Y,X),write(Y).
