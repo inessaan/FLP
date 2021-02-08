@@ -76,3 +76,5 @@ parent(zhdana,zabava).
 
 men:-man(X),write(X),write(","),fail.
 women:- woman(X), write(X), write(","),fail.
+children(X,Y):-parent(Y,X).
+allchildren(Y):-children(X,Y),write(X),write(","),fail.
