@@ -78,3 +78,5 @@ men:-man(X),write(X),write(","),fail.
 women:- woman(X), write(X), write(","),fail.
 children(X,Y):-parent(Y,X).
 allchildren(Y):-children(X,Y),write(X),write(","),fail.
+mother(X,Y):-parent(X,Y),woman(X).
+mother(X):-mother(Y,X),write(Y).
