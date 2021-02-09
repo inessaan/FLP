@@ -88,3 +88,7 @@ brothers(X):-brother_for_all(Y,X),write(Y),write(","),fail.
 sister(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y),!.
 sister_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y).
 sisters(X):-sister_for_all(Y,X),write(Y),write(","),fail.
+b_s(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),!. /*если родные брат/сестра, выводит true, иначе false*/
+b_s_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y).
+b_s(X):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),write(Y),write(","),fail.
+cousins(X):-parent(Y,X),parent(Z,Y),man(Z),children(W,Z),not(W=Y),allchildren(W),!.
