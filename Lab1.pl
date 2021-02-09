@@ -11,7 +11,10 @@ man(svyatogor).
 man(zloba).
 man(gorinya).
 man(dobrinya).
-
+man(venceslav).
+man(stanimir).
+man(ostromir).
+man(ognedar).
 
 woman(goluba).
 woman(lubomila).
@@ -26,6 +29,10 @@ woman(vera).
 woman(iskra).
 woman(dragomira).
 woman(zabava).
+woman(miroslava).
+woman(mlada).
+woman(marfa).
+woman(roksana).
 
 
 parent(voeneg,ratibor).
@@ -74,6 +81,16 @@ parent(zhdana,dobrinya).
 parent(zhdana,zlatomir).
 parent(zhdana,zabava).
 
+parent(venceslav,boguslav).
+parent(miroslava,boguslav).
+parent(stanimir,lubomila).
+parent(mlada,lubomila).
+parent(ostromir,veslava).
+parent(marfa,veslava).
+parent(ognedar,duhovlad).
+parent(roksana,duhovlad).
+
+
 men:-man(X),write(X),write(","),fail.
 women:- woman(X), write(X), write(","),fail.
 children(X,Y):-parent(Y,X).
@@ -92,3 +109,5 @@ b_s(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),!. /*если родные б�
 b_s_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y).
 b_s(X):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),write(Y),write(","),fail.
 cousins(X):-parent(Y,X),parent(Z,Y),man(Z),children(W,Z),not(W=Y),allchildren(W),!.
+grand_pa(X,Y):-parent(Z,Y),parent(X,Z),man(X),!.
+grand_pas(X):-parent(Y,X),parent(Z,Y),man(Z),write(Z),write(","),fail.
