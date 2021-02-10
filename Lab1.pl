@@ -121,6 +121,9 @@ grand_pas(X):-parent(Y,X),parent(Z,Y),man(Z),write(Z),write(","),fail.
 grand_ma(X,Y):-parent(Z,Y),parent(X,Z),woman(X),!.
 grand_mas(X):-parent(Y,X),parent(Z,Y),woman(Z),write(Z),write(","),fail.
 
+grand_pa_and_son(X,Y):-grand_pa(X,Y),man(Y),!;grand_pa(Y,X),man(X),!.
+
+
 uncle(X,Y):-parent(Z,Y),brother(X,Z).
 uncles(X):-parent(Z,X),brother_for_all(Y,Z),write(Y),write(","),fail.
 aunt(X,Y):-parent(Z,Y),sister(X,Z),!.
