@@ -123,3 +123,5 @@ grand_mas(X):-parent(Y,X),parent(Z,Y),woman(Z),write(Z),write(","),fail.
 
 uncle(X,Y):-parent(Z,Y),brother(X,Z).
 uncles(X):-parent(Z,X),brother_for_all(Y,Z),write(Y),write(","),fail.
+aunt(X,Y):-parent(Z,Y),sister(X,Z),!.
+aunts(X):-parent(Z,X),sister_for_all(Y,Z),write(Y),write(","),fail.
