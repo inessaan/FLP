@@ -91,11 +91,11 @@ parent(ognedar,duhovlad).
 parent(roksana,duhovlad).
 
 
-men:-man(X),write(X),write(","),fail.
-women:- woman(X), write(X), write(","),fail.
+men:-man(X),write(X),nl,fail.
+women:- woman(X), write(X), nl,fail.
 
 children(X,Y):-parent(Y,X).
-allchildren(Y):-children(X,Y),write(X),write(","),fail.
+allchildren(Y):-children(X,Y),write(X),nl,fail.
 
 mother(X,Y):-parent(X,Y),woman(X).
 mother(X):-mother(Y,X),write(Y).
@@ -105,15 +105,15 @@ father(X):-father(Y,X),write(Y).
 
 brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y),!.
 brother_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
-brothers(X):-brother_for_all(Y,X),write(Y),write(","),fail.
+brothers(X):-brother_for_all(Y,X),write(Y),nl,fail.
 
 sister(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y),!.
 sister_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y).
-sisters(X):-sister_for_all(Y,X),write(Y),write(","),fail.
+sisters(X):-sister_for_all(Y,X),write(Y),nl,fail.
 
 b_s(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),!. /*если родные брат/сестра, выводит true, иначе false*/
 b_s_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y).
-b_s(X):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),write(Y),write(","),fail.
+b_s(X):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),write(Y),nl,fail.
 cousins(X):-parent(Y,X),parent(Z,Y),man(Z),children(W,Z),not(W=Y),allchildren(W),!.
 
 grand_pa(X,Y):-parent(Z,Y),parent(X,Z),man(X),!.
@@ -125,6 +125,6 @@ grand_pa_and_son(X,Y):-grand_pa(X,Y),man(Y),!;grand_pa(Y,X),man(X),!.
 grand_ma_and_son(X,Y):-grand_ma(X,Y),man(Y),!;grand_ma(Y,X),man(X),!.
 
 uncle(X,Y):-parent(Z,Y),brother(X,Z),!.
-uncles(X):-parent(Z,X),brother_for_all(Y,Z),write(Y),write(","),fail.
+uncles(X):-parent(Z,X),brother_for_all(Y,Z),write(Y),nl,fail.
 aunt(X,Y):-parent(Z,Y),sister(X,Z),!.
-aunts(X):-parent(Z,X),sister_for_all(Y,Z),write(Y),write(","),fail.
+aunts(X):-parent(Z,X),sister_for_all(Y,Z),write(Y),nl,fail.
