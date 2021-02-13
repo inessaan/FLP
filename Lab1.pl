@@ -117,9 +117,9 @@ b_s(X):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),write(Y),nl,fail.
 cousins(X):-parent(Y,X),parent(Z,Y),man(Z),children(W,Z),not(W=Y),allchildren(W),!.
 
 grand_pa(X,Y):-parent(Z,Y),parent(X,Z),man(X),!.
-grand_pas(X):-parent(Y,X),parent(Z,Y),man(Z),write(Z),write(","),fail.
+grand_pas(X):-parent(Y,X),parent(Z,Y),man(Z),write(Z),nl,fail.
 grand_ma(X,Y):-parent(Z,Y),parent(X,Z),woman(X),!.
-grand_mas(X):-parent(Y,X),parent(Z,Y),woman(Z),write(Z),write(","),fail.
+grand_mas(X):-parent(Y,X),parent(Z,Y),woman(Z),write(Z),nl,fail.
 
 grand_pa_and_son(X,Y):-grand_pa(X,Y),man(Y),!;grand_pa(Y,X),man(X),!.
 grand_ma_and_son(X,Y):-grand_ma(X,Y),man(Y),!;grand_ma(Y,X),man(X),!.
