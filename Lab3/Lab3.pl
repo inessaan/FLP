@@ -23,3 +23,7 @@ fib_down(N, X) :- fib(N, 1, 1, X).
 
 sumOfDigits(0, 0) :- !.
 sumOfDigits(Num, Sum) :- Mod is Num mod 10, Num1 is Num div 10, sumOfDigits(Num1, Sum1), Sum is Sum1 + Mod.
+
+sumOfDigits(0, CurSum, CurSum) :- !.
+sumOfDigits(Num, CurSum, Sum) :- Mod is Num mod 10, Num1 is Num div 10, CurSum1 is CurSum + Mod, sumOfDigits(Num1, CurSum1, Sum).
+sumOfDigits_down(Num, Sum) :- sumOfDigits(Num, 0, Sum).
