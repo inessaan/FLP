@@ -15,6 +15,7 @@ man(venceslav).
 man(stanimir).
 man(ostromir).
 man(ognedar).
+man(peresvet).
 
 woman(belogora).
 woman(vesea).
@@ -33,7 +34,7 @@ woman(miroslava).
 woman(mlada).
 woman(marfa).
 woman(roksana).
-
+woman(pavlina).
 
 parent(milovan,darimir).
 parent(milovan,vseoka).
