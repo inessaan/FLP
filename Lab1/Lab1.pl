@@ -38,7 +38,7 @@ woman(pavlina).
 
 parent(milovan,darimir).
 parent(milovan,vseoka).
-parent(milovan,velerad).
+parent(milovan,boris).
 parent(milovan,doda).
 
 parent(belogora,darimir).
