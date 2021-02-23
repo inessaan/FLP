@@ -111,12 +111,10 @@ father(X,Y):-parent(X,Y),man(X),!.
 father(X):-father(Y,X),write(Y).
 
 brother(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y),!.
-brother_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),man(X),not(X=Y).
-brothers(X):-brother_for_all(Y,X),write(Y),nl,fail.
+brothers(X):-mother(Z,X),mother(Z,Y),man(Y),X\=Y,write(Y),nl,fail.
 
 sister(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y),!.
-sister_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),woman(X),not(X=Y).
-sisters(X):-sister_for_all(Y,X),write(Y),nl,fail.
+sisters(X):-mother(Z,X),mother(Z,Y),woman(Y),X\=Y,write(Y),nl,fail.
 
 b_s(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y),!. /*если родные брат/сестра, выводит true, иначе false*/
 b_s_for_all(X,Y):-parent(Z,X),parent(Z,Y),man(Z),not(X=Y).
