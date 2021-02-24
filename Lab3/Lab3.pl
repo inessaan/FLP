@@ -27,3 +27,6 @@ sumOfDigits(Num, Sum) :- Mod is Num mod 10, Num1 is Num div 10, sumOfDigits(Num1
 sumOfDigits(0, CurSum, CurSum) :- !.
 sumOfDigits(Num, CurSum, Sum) :- Mod is Num mod 10, Num1 is Num div 10, CurSum1 is CurSum + Mod, sumOfDigits(Num1, CurSum1, Sum).
 sumOfDigits_down(Num, Sum) :- sumOfDigits(Num, 0, Sum).
+
+multOfDigits(0,1):-!.
+multOfDigits(X,Mult):-X1 is X div 10, multOfDigits(X1,Mult1), Mult is Mult1 * (X mod 10).
