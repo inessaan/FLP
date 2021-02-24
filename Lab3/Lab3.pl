@@ -30,3 +30,7 @@ sumOfDigits_down(Num, Sum) :- sumOfDigits(Num, 0, Sum).
 
 multOfDigits(0,1):-!.
 multOfDigits(X,Mult):-X1 is X div 10, multOfDigits(X1,Mult1), Mult is Mult1 * (X mod 10).
+
+multOfDigits(0,Mult,Mult):-!.
+multOfDigits(X,Cur,Mult):-X1 is X div 10, Cur1 is Cur * (X mod 10), multOfDigits(X1,Cur1,Mult).
+mult_down(X,Mult):-multOfDigits(X,1,Mult).
