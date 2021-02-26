@@ -21,16 +21,22 @@ fib(2, _, CurX2, CurX2) :- !.
 fib(N, CurX1, CurX2, X) :- CurX3 is CurX1 + CurX2, N1 is N - 1, fib(N1, CurX2, CurX3, X).
 fib_down(N, X) :- fib(N, 1, 1, X).
 
-sumOfDigits(0, 0) :- !.
-sumOfDigits(Num, Sum) :- Mod is Num mod 10, Num1 is Num div 10, sumOfDigits(Num1, Sum1), Sum is Sum1 + Mod.
+sumDig(0, 0) :- !.
+sumDig(Num, Sum) :- Mod is Num mod 10, Num1 is Num div 10, sumDig(Num1, Sum1), Sum is Sum1 + Mod.
 
-sumOfDigits(0, CurSum, CurSum) :- !.
-sumOfDigits(Num, CurSum, Sum) :- Mod is Num mod 10, Num1 is Num div 10, CurSum1 is CurSum + Mod, sumOfDigits(Num1, CurSum1, Sum).
-sumOfDigits_down(Num, Sum) :- sumOfDigits(Num, 0, Sum).
+sumDig(0, CurSum, CurSum) :- !.
+sumDig(Num, CurSum, Sum) :- Mod is Num mod 10, Num1 is Num div 10, CurSum1 is CurSum + Mod, sumDig(Num1, CurSum1, Sum).
+sumDig_down(Num, Sum) :- sumDig(Num, 0, Sum).
 
-multOfDigits(0,1):-!.
-multOfDigits(X,Mult):-X1 is X div 10, multOfDigits(X1,Mult1), Mult is Mult1 * (X mod 10).
+multDig(0,1):-!.
+multDig(X,Mult):-X1 is X div 10, multDig(X1,Mult1), Mult is Mult1 * (X mod 10).
 
-multOfDigits(0,Mult,Mult):-!.
-multOfDigits(X,Cur,Mult):-X1 is X div 10, Cur1 is Cur * (X mod 10), multOfDigits(X1,Cur1,Mult).
-mult_down(X,Mult):-multOfDigits(X,1,Mult).
+multDig(0,Mult,Mult):-!.
+multDig(X,Cur,Mult):-X1 is X div 10, Cur1 is Cur * (X mod 10), multDig(X1,Cur1,Mult).
+multDig_down(X,Mult):-multDig(X,1,Mult).
+
+odd(X,Y):- X2 is X mod 10,X2>3,X1 is X mod 10 mod 2,X1 \= 0, Y is 1.
+odd(_,Y):-Y is 0,!.
+
+count(0,0):-!.
+count(N,Count):-N1 is N div 10, count(N1,Count1), odd(N,Y), Count is Count1+Y,!.
