@@ -40,3 +40,7 @@ odd(_,Y):-Y is 0,!.
 
 count(0,0):-!.
 count(N,Count):-N1 is N div 10, count(N1,Count1), odd(N,Y), Count is Count1+Y,!.
+
+count_down(0,Count,Count):-!.
+count_down(N,CurCount,Count):- N1 is N div 10,odd(N,Y),CurCount1 is CurCount+Y, count_down(N1,CurCount1,Count),!.
+count_down(N,Count):-count_down(N,0,Count).
