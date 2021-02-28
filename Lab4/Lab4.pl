@@ -58,4 +58,9 @@ rev([H|T],CurL,X):-rev(T,[H|CurL],X).
 /*Задание 11*/ 
 p([],_):-!. 
 p([H|T],List):-memb(List,H),p(T,List). 
+
+/*Задание 12*/ 
+delNum(0,[_|List], List):-!. 
+delNum(X,[H|Y],[H|List]):-X1 is X-1,delNum(X1,Y,List). 
+
  
