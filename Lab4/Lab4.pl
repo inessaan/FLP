@@ -17,8 +17,13 @@ readSumWriteList(N):-
 sumListUp([],0):-!.
 sumListUp([H|T],Sum):-sumListUp(T,Sum1),Sum is Sum1+H.
 
-listElNumb([H|_],H,0):-!.
-listElNumb([_|List],Elem,Numb):-listElNumb(List,Elem,NewNumb),Numb is NewNumb+1.
+listElNumb(List,Elem,Number):-listElNumb(List,Elem,0,Number).
+listElNumb([H|_],H,Number,Number):-!.
+listElNumb([_|T],Elem,I,Number):-I1 is I+1,listElNumb(T,Elem,I1,Number).
+
 
 readLEN:-write("N = "),read(N), nl,write("enter an elem"),nl,readList(N,List),write("elem is "),nl,read(Elem),listElNumb(List,Elem,Number),write("position is "),write(Number),!.
 readLEN:-write("is no elem").
+
+readLNE:-write("N = "),read(N),nl,write("enter an elem"),nl,readList(N,List),write("position is "),nl,read(Number),listElNumb(List,Elem,Number),write("elem is "),write(Elem),!.
+readLNE:-write("is no elem").
