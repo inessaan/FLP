@@ -45,3 +45,7 @@ minListD([_|T],Cur,Min):-minListD(T,Cur,Min).
 
 /*Задание 8*/
 readLMin:-write("N = "),read(N), nl,readList(N,List),minListUp(List,Min),write("min = "),write(Min).
+
+/*Задание 9*/
+memb([X|_],X):-!.
+memb([_|T],X):-memb(T,X).
