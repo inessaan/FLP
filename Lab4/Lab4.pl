@@ -27,3 +27,6 @@ readLEN:-write("is no elem").
 
 readLNE:-write("N = "),read(N),nl,write("enter an elem"),nl,readList(N,List),write("position is "),nl,read(Number),listElNumb(List,Elem,Number),write("elem is "),write(Elem),!.
 readLNE:-write("is no elem").
+
+minListUp([H],H):-!.
+minListUp([H|T],Min):-minListUp(T,Min1),(H<Min1->Min=H; Min=Min1).
