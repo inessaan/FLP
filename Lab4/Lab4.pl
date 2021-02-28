@@ -63,4 +63,6 @@ p([H|T],List):-memb(List,H),p(T,List).
 delNum(0,[_|List], List):-!. 
 delNum(X,[H|Y],[H|List]):-X1 is X-1,delNum(X1,Y,List). 
 
- 
+/*Задание 13*/
+delElem([],_,[]).
+delElem([H|T],X,List):-(H=X-> delElem(T,X,List); List=[H|T1],delElem(T,X,T1)).
