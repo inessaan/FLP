@@ -16,3 +16,6 @@ readSumWriteList(N):-
 
 sumListUp([],0):-!.
 sumListUp([H|T],Sum):-sumListUp(T,Sum1),Sum is Sum1+H.
+
+listElNumb([H|_],H,0):-!.
+listElNumb([_|List],Elem,Numb):-listElNumb(List,Elem,NewNumb),Numb is NewNumb+1.
