@@ -49,3 +49,8 @@ readLMin:-write("N = "),read(N), nl,readList(N,List),minListUp(List,Min),write("
 /*Задание 9*/
 memb([X|_],X):-!.
 memb([_|T],X):-memb(T,X).
+
+/*Задание 10*/ 
+reverse(L,X):-rev(L,[],X). 
+rev([],X,X):-!. 
+rev([H|T],CurL,X):-rev(T,[H|CurL],X). 
