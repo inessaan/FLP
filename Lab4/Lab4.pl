@@ -66,3 +66,9 @@ delNum(X,[H|Y],[H|List]):-X1 is X-1,delNum(X1,Y,List).
 /*Задание 13*/
 delElem([],_,[]).
 delElem([H|T],X,List):-(H=X-> delElem(T,X,List); List=[H|T1],delElem(T,X,T1)).
+
+/*Задание 14*/
+single(_,[]):-!.
+single([H|T]):-single(H,T),single(T).
+single(X,[H|T]):- X\= H,single(X,T).
+single([]):-!.
