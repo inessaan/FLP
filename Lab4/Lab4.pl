@@ -13,3 +13,6 @@ readSumWriteList(N):-
     readList(N,L),
     sumListDown(L,Sum),
     nl, write("Sum = "),write(Sum),nl,fail.
+
+sumListUp([],0):-!.
+sumListUp([H|T],Sum):-sumListUp(T,Sum1),Sum is Sum1+H.
