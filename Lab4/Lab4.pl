@@ -82,3 +82,7 @@ uniq([H|T],[H|T1]):-uniq(T,T1),!.
 elCount([],_,Count,Count):-!.
 elCount(List,El,Count):-elCount(List,El,0,Count).
 elCount([H|T],El,Num,Count):-(H=:=El->Num1 is Num+1;Num1 is Num),elCount(T,El,Num1,Count).
+
+/*Задание 17*/
+len([],0):-!.
+len([H|T],X):-len(T,X1),X is X1+1.
