@@ -19,3 +19,6 @@ sumListUp([H|T],Sum):-sumListUp(T,Sum1),Sum is Sum1+H.
 
 listElNumb([H|_],H,0):-!.
 listElNumb([_|List],Elem,Numb):-listElNumb(List,Elem,NewNumb),Numb is NewNumb+1.
+
+readLEN:-write("N = "),read(N), nl,write("enter an elem"),nl,readList(N,List),write("elem is "),nl,read(Elem),listElNumb(List,Elem,Number),write("position is "),write(Number),!.
+readLEN:-write("is no elem").
