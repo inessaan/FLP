@@ -72,3 +72,8 @@ single(_,[]):-!.
 single([H|T]):-single(H,T),single(T).
 single(X,[H|T]):- X\= H,single(X,T).
 single([]):-!.
+
+/*Задание 15*/
+uniq([],[]):-!.
+uniq([H|T],T1):-memb(T,H),uniq(T,T1),!.
+uniq([H|T],[H|T1]):-uniq(T,T1),!.
