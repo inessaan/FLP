@@ -80,3 +80,15 @@ pr_boys :- Boys = [_, _, _],
 		not(in_list(Girls, [valya, white, white])),
 
 		write(Girls), !.
+/*Задание 4*/
+
+pr_friends :- Friends = [_, _, _],
+
+		in_list(Friends, [slesar, _, 0, 0, _]),
+		in_list(Friends, [tokar, _, _, 1, _]),
+		in_list(Friends, [svarschik, _, _, _, _]),
+		in_list(Friends, [_, borisov, 1, _, _]),
+		in_list(Friends, [_, ivanov, _, _, _]),
+		in_list(Friends, [_, semenov, _, 2, borisov]),
+
+		write(Friends), !.
