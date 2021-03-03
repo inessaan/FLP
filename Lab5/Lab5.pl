@@ -63,3 +63,20 @@ pr_boys :- Boys = [_, _, _],
 		not(in_list(Boys, [rijov, ginger])),
 
 		write(Boys), !.
+/*Задание 3*/
+  pr_girls :- Girls = [_, _, _],
+
+		in_list(Girls, [_, white, _]),
+		in_list(Girls, [_, _, white]),
+		in_list(Girls, [_, green, _]),
+		in_list(Girls, [_, _, green]),
+		in_list(Girls, [_, blue, _]),
+		in_list(Girls, [_, _, blue]),
+		in_list(Girls, [anya, _, _]),
+		in_list(Girls, [natasha, _, green]),
+		in_list(Girls, [valya, _, _]),
+
+		not(in_list(Girls, [natasha, green, _])),
+		not(in_list(Girls, [valya, white, white])),
+
+		write(Girls), !.
