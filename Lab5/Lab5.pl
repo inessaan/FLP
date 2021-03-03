@@ -48,3 +48,18 @@ pr_ein:- Houses=[_,_,_,_,_],
 		in_list(Houses,[_,WHO2,_,zebra,_]),
 		write(Houses),
 		write(WHO1),nl,write(WHO2).
+/*Задание 2*/
+pr_boys :- Boys = [_, _, _],
+
+		in_list(Boys, [belokurov, _]),
+		in_list(Boys, [chernov, _]),
+		in_list(Boys, [rijov, _]),
+		in_list(Boys, [_, white]),
+		in_list(Boys, [_, black]),
+		in_list(Boys, [_, ginger]),
+
+		not(in_list(Boys, [belokurov, white])),
+		not(in_list(Boys, [chernov, black])),
+		not(in_list(Boys, [rijov, ginger])),
+
+		write(Boys), !.
