@@ -92,3 +92,29 @@ pr_friends :- Friends = [_, _, _],
 		in_list(Friends, [_, semenov, _, 2, borisov]),
 
 		write(Friends), !.
+/*Задание 5*/
+pr_vessels :- Vessels = [_, _, _, _],
+
+		in_list(Vessels, [bottle, _]),
+		in_list(Vessels, [glass, _]),
+		in_list(Vessels, [jug, _]),
+		in_list(Vessels, [jar, _]),
+
+		in_list(Vessels, [_, milk]),
+		in_list(Vessels, [_, lemonade]),
+		in_list(Vessels, [_, kvass]),
+		in_list(Vessels, [_, water]),
+
+		not(in_list(Vessels, [bottle, water])),
+		not(in_list(Vessels, [bottle, milk])),
+
+		sprava_next([jug, _], [_, lemonade], Vessels),
+		sprava_next([_, lemonade], [_, kvass], Vessels),
+
+		not(in_list(Vessels, [jar, lemonade])),
+		not(in_list(Vessels, [jar, water])),
+
+		next_to([jar, _], [glass, _], Vessels),
+		next_to([jar, _], [_, milk], Vessels),
+
+		write(Vessels),!.
