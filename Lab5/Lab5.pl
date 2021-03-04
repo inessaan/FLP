@@ -124,15 +124,38 @@ pr_talents :- Talents = [_, _, _, _],
 /* 1 - был в консерватории 
  * 2 - позировали художнику 
  * 3 - о нем писали книгу*/ 
-  in_list(Talents, [voronov, _, 1, 3]), 
-  in_list(Talents, [pavlov, _, _, 2]), 
-  in_list(Talents, [levitskiy, _, 1, _]), 
-  in_list(Talents, [saharov, _, _, 3]), 
+  		in_list(Talents, [voronov, _, 1, 3]), 
+  		in_list(Talents, [pavlov, _, _, 2]), 
+  		in_list(Talents, [levitskiy, _, 1, _]), 
+  		in_list(Talents, [saharov, _, _, 3]), 
  
-  in_list(Talents, [_, dancer, _, _]), 
-  in_list(Talents, [_, artist, _, _]), 
-  in_list(Talents, [_, singer, 1, _]), 
-  in_list(Talents, [_, writer, _, 2]), 
+  		in_list(Talents, [_, dancer, _, _]), 
+  		in_list(Talents, [_, artist, _, _]), 
+  		in_list(Talents, [_, singer, 1, _]), 
+  		in_list(Talents, [_, writer, _, 2]), 
  
-  not(in_list(Talents, [pavlov, _,0, _])), 
-  write(Talents), !.
+  		not(in_list(Talents, [pavlov, _,0, _])), 
+  		write(Talents), !.
+
+/*Задание 7*/
+pr_sports:- Sports = [_, _, _],
+                in_list(Sports, [michael, _, basketball, _]),
+		in_list(Sports, [saimon, israeli, _, _]),
+		in_list(Sports, [richard, _, _, _]),
+                in_list(Sports, [_, american, _, _]),
+                in_list(Sports, [_, australian, _, _]),
+		in_list(Sports, [_, _, tennis, _]),
+		in_list(Sports, [_, _, cricket, 1]),
+                in_list(Sports, [_, _, _, 2]),
+                in_list(Sports, [_, _, _, 3]),
+
+
+                not(in_list(Sports, [michael, american,_, _])),
+                not(in_list(Sports, [saimon, _,tennis, _])),
+
+                in_list(Sports, [X,australian,_,_]),
+                in_list(Sports, [Y,_,tennis,_]),
+                write(Sports),nl,
+                write(X),write(" - australian"),nl,
+                write(Y),write(" - plays tennis"),
+                !.
