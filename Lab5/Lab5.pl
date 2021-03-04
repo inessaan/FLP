@@ -118,3 +118,21 @@ pr_vessels :- Vessels = [_, _, _, _],
 		next_to([jar, _], [_, milk], Vessels),
 
 		write(Vessels),!.
+
+/*Задание 6*/ 
+pr_talents :- Talents = [_, _, _, _], 
+/* 1 - был в консерватории 
+ * 2 - позировали художнику 
+ * 3 - о нем писали книгу*/ 
+  in_list(Talents, [voronov, _, 1, 3]), 
+  in_list(Talents, [pavlov, _, _, 2]), 
+  in_list(Talents, [levitskiy, _, 1, _]), 
+  in_list(Talents, [saharov, _, _, 3]), 
+ 
+  in_list(Talents, [_, dancer, _, _]), 
+  in_list(Talents, [_, artist, _, _]), 
+  in_list(Talents, [_, singer, 1, _]), 
+  in_list(Talents, [_, writer, _, 2]), 
+ 
+  not(in_list(Talents, [pavlov, _,0, _])), 
+  write(Talents), !.
