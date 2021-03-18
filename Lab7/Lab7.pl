@@ -110,3 +110,13 @@ indexOfMin([H|T], X):-indexOfMin(T, 1, 1, X, H).
 indexOfMin([], _, MinInd, MinInd, _):-!.
 indexOfMin([H|T], CurInd, _, X, CurMin):- H > CurMin, NewCurInd is CurInd + 1, indexOfMin(T, NewCurInd, NewCurInd, X, H), !.
 indexOfMin([_|T], CurInd, MinInd, X, CurMin):- NewCurInd is CurInd + 1, indexOfMin(T, NewCurInd, MinInd, X, CurMin).
+
+/*Задание 4*/
+
+prExc4:-read_str(A,N),(N>5->wr_3(A),reverse(A,A1),wr_3(A1);write_first(A,N)).
+
+write_first(_,0,_):-!.
+write_first(Head,I,N):-name(CurHead,[Head]),write(CurHead),I1 is I-1,write_first(Head,I1,N).
+write_first([Head|_],N):-write_first(Head,N,N).
+
+wr_3([First,Second,Third|_]):-name(First1,[First]),write(First1),name(Second1,[Second]),write(Second1),name(Third1,[Third]),write(Third1).
