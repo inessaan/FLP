@@ -16,10 +16,10 @@ write_str([H|Tail]):-put(H),write_str(Tail).
 write_list_str([]):-!.
 write_list_str([H|T]):-write_str(H),nl,write_list_str(T).
 
-read_str_f(A,N,Flag):-get0(X),r_str_f(X,A,[],N,0,Flag).
-r_str_f(-1,A,A,N,N,1):-!.
-r_str_f(10,A,A,N,N,0):-!.
-r_str_f(X,A,B,N,K,Flag):-K1 is K+1,append(B,[X],B1),get0(X1),r_str_f(X1,A,B1,N,K1,Flag).
+read_str(A,N,Flag):-get0(X),r_str(X,A,[],N,0,Flag).
+r_str(-1,A,A,N,N,1):-!.
+r_str(10,A,A,N,N,0):-!.
+r_str(X,A,B,N,K,Flag):-K1 is K+1,append(B,[X],B1),get0(X1),r_str(X1,A,B1,N,K1,Flag).
 
 read_str(A,N):-get0(X),r_str(X,A,[],N,0).
 r_str(10,A,A,N,N):-!.
