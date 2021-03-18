@@ -57,3 +57,23 @@ remove_from_list([IH|IT], Elem, TempLeft, Result):-
 /*Задание 1*/
 
 prExc1:-read_str(A,X,0),write_str(A),write(" , "),write_str(A),write(" , "),write_str(A),write(" , "),write(X).
+
+/*Задание 2*/
+
+prExc2:-read_str(A,N),count_words(A,K),write(K).
+
+count_words(A,K):-count_words(A,0,K).
+count_words([],K,K):-!.
+count_words(Str,I,K):-skip_space(Str,New_Str),get_word(New_Str,Word,New_Str_after_word),Word \=[],I1 is I+1,count_words(New_Str_after_word,I1,K),!.
+count_words(_,K,K).
+
+skip_space([32|T],A1):-skip_space(T,A1),!.
+skip_space(A1,A1).
+
+get_word([],[],[]):-!.
+get_word(A,Word,A2):-get_word(A,[],Word,A2).
+
+get_word([],Word,Word,[]).
+get_word([32|T],Word,Word,T):-!.
+get_word([H|T],W,Word,A2):-append(W,[H],W1),get_word(T,W1,Word,A2).
+
