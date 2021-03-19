@@ -154,3 +154,13 @@ count_minus([Head|Tail],I,Count_minus):-(Head =:= 45->I1 is I+1,count_minus(Tail
 count_zero([_|Tail],Count_zero):-count_zero(Tail,0,Count_zero).
 count_zero([],Count_zero,Count_zero):-!.
 count_zero([Head|Tail],I,Count_zero):-(Head =:= 48->I1 is I+1,count_zero(Tail,I1,Count_zero);count_zero(Tail,I,Count_zero)).
+
+/*Задание 8*/
+
+prExc8:-read_str(A,_),symb_w(A,0,W),symb_x(A,0,X),(W<X->write("x more");write("w more")).
+
+symb_w([],_,_):-write("w not found"),!,fail.
+symb_w([H|T],I,W):-(H =:=119 -> W is I;I1 is I+1,symb_w(T,I1,W)).
+
+symb_x([],_,_):-write("x not found"),!,fail.
+symb_x([H|T],I,X):-(H =:=120 -> X is I;I1 is I+1,symb_x(T,I1,X)).
