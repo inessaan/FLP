@@ -131,3 +131,10 @@ last_simbol([_|Tail],Elem):-last_simbol(Tail,Elem).
 show_match([_],_,_):-!.
 show_match([Elem|Tail],Elem,I):-write(I),nl,I1 is I+1,show_match(Tail,Elem,I1),!.
 show_match([_|Tail],Elem,I):-I1 is I+1,show_match(Tail,Elem,I1).
+
+/*Задание 6*/
+
+prExc6:-read_str(A,_),show_3(A,0).
+
+show_3([],_):-!.
+show_3([Head|Tail],I):-I1 is I+1,(I1 mod 3 =:= 0->name(Head1,[Head]),write(Head1),nl,show_3(Tail,I1);show_3(Tail,I1)).
