@@ -164,3 +164,10 @@ symb_w([H|T],I,W):-(H =:=119 -> W is I;I1 is I+1,symb_w(T,I1,W)).
 
 symb_x([],_,_):-write("x not found"),!,fail.
 symb_x([H|T],I,X):-(H =:=120 -> X is I;I1 is I+1,symb_x(T,I1,X)).
+
+/*Задание 9*/
+
+prExc9:-read_str(A,N1),read_str(B,N2),(N1>N2->N is N1-N2,write_big(A,N);N is N2-N1,write_big(B,N)).
+
+write_big(_,0):-!.
+write_big(Str,Num):-name(A,Str),write(A),nl,Num1 is Num-1,write_big(Str,Num1).
