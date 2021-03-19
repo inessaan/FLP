@@ -120,3 +120,14 @@ write_first(Head,I,N):-name(CurHead,[Head]),write(CurHead),I1 is I-1,write_first
 write_first([Head|_],N):-write_first(Head,N,N).
 
 wr_3([First,Second,Third|_]):-name(First1,[First]),write(First1),name(Second1,[Second]),write(Second1),name(Third1,[Third]),write(Third1).
+
+/*Задание 5*/
+
+prExc5:-read_str(A,_),last_simbol(A,Elem),show_match(A,Elem,0).
+
+last_simbol([Head],Head):-!.
+last_simbol([_|Tail],Elem):-last_simbol(Tail,Elem).
+
+show_match([_],_,_):-!.
+show_match([Elem|Tail],Elem,I):-write(I),nl,I1 is I+1,show_match(Tail,Elem,I1),!.
+show_match([_|Tail],Elem,I):-I1 is I+1,show_match(Tail,Elem,I1).
