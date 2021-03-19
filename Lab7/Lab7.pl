@@ -138,3 +138,19 @@ prExc6:-read_str(A,_),show_3(A,0).
 
 show_3([],_):-!.
 show_3([Head|Tail],I):-I1 is I+1,(I1 mod 3 =:= 0->name(Head1,[Head]),write(Head1),nl,show_3(Tail,I1);show_3(Tail,I1)).
+
+/*Задание 7*/
+
+prExc7:-read_str(A,_),count_plus(A,Plus),count_minus(A,Minus),count_zero(A,Zero),Sum is Minus+Plus+Zero, write("Count +,-,0 = "),write(Sum).
+
+count_plus(Str,Count_plus):-count_plus(Str,0,Count_plus).
+count_plus([],Count_plus,Count_plus):-!.
+count_plus([Head|Tail],I,Count_plus):-(Head =:= 43->I1 is I+1,count_plus(Tail,I1,Count_plus);count_plus(Tail,I,Count_plus)).
+
+count_minus(Str,Count_minus):-count_minus(Str,0,Count_minus).
+count_minus([],Count_minus,Count_minus):-!.
+count_minus([Head|Tail],I,Count_minus):-(Head =:= 45->I1 is I+1,count_minus(Tail,I1,Count_minus);count_minus(Tail,I,Count_minus)).
+
+count_zero([_|Tail],Count_zero):-count_zero(Tail,0,Count_zero).
+count_zero([],Count_zero,Count_zero):-!.
+count_zero([Head|Tail],I,Count_zero):-(Head =:= 48->I1 is I+1,count_zero(Tail,I1,Count_zero);count_zero(Tail,I,Count_zero)).
