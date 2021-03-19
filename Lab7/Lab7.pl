@@ -171,3 +171,10 @@ prExc9:-read_str(A,N1),read_str(B,N2),(N1>N2->N is N1-N2,write_big(A,N);N is N2-
 
 write_big(_,0):-!.
 write_big(Str,Num):-name(A,Str),write(A),nl,Num1 is Num-1,write_big(Str,Num1).
+
+/*Задание 10*/
+
+prExc10:-read_str(A,_),check(A,A1),name(A2,A1),write(A2).
+
+check([A,B,C|Tail],Res):-(A is 97,B is 98,C is 99->append([119,119,119],Tail,Res);
+append([A,B,C|Tail],[122,122,122],Res)).
