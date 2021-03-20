@@ -178,3 +178,13 @@ prExc10:-read_str(A,_),check(A,A1),name(A2,A1),write(A2).
 
 check([A,B,C|Tail],Res):-(A is 97,B is 98,C is 99->append([119,119,119],Tail,Res);
 append([A,B,C|Tail],[122,122,122],Res)).
+
+/*Задание 11*/
+
+prExc11:-read_str(A,N),(N>10->first_6(A,A1);add_12(A,N,A1)),name(Res,A1),write(Res).
+
+first_6([H1,H2,H3,H4,H5,H6|_],[H1,H2,H3,H4,H5,H6]).
+
+add_12(Res,12,Res):-!.
+add_12(Str,N,Res):-N1 is N+1,append(Str,[111],Str1),add_12(Str1,N1,Res).
+
