@@ -196,3 +196,12 @@ only_abc([]):-!.
 only_abc([H|_]):-H =\=97,H =\=98,H =\=99,!,fail.
 only_abc([_|T]):-only_abc(T).
 
+/*Задание 16*/
+
+prExc16:-read_str(A,_),to_letter(A,[],Res),name(A_n,Res),write(A_n).
+
+to_letter([H2,H3,H4],I,Res):-append(I,[H2,H3,H4],Res),!.
+to_letter([],Res,Res):-!.
+to_letter([H1,H2,H3,H4|Tail],I,Res):-check_let(H1,H2,H3,H4)->append(I,[108,101,116,116,101,114],I1),to_letter(Tail,I1,Res);append(I,[H1],I1),to_letter([H2,H3,H4|Tail],I1,Res).
+
+check_let(H1,H2,H3,H4):-H1 =:= 119,H2 =:= 111,H3 =:= 114,H4 =:= 100.
