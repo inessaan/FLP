@@ -205,3 +205,13 @@ to_letter([],Res,Res):-!.
 to_letter([H1,H2,H3,H4|Tail],I,Res):-check_let(H1,H2,H3,H4)->append(I,[108,101,116,116,101,114],I1),to_letter(Tail,I1,Res);append(I,[H1],I1),to_letter([H2,H3,H4|Tail],I1,Res).
 
 check_let(H1,H2,H3,H4):-H1 =:= 119,H2 =:= 111,H3 =:= 114,H4 =:= 100.
+
+/*Задание 17*/
+
+prExc17:-read_str(A,_),del_x(A,[],Res),name(A_n,Res),write(A_n).
+
+del_x([H2,H3,H4],I,Res):-append(I,[H2,H3,H4],Res),!.
+del_x([],Res,Res):-!.
+del_x([H1,H2,H3,H4|Tail],I,Res):-check_x(H1,H2,H3,H4)->append(I,[97,98,99],I1),del_x(Tail,I1,Res);append(I,[H1],I1),del_x([H2,H3,H4|Tail],I1,Res).
+
+check_x(H1,H2,H3,H4):-H1 =:= 120,H2 =:= 97,H3 =:= 98,H4 =:= 99.
