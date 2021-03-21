@@ -188,6 +188,13 @@ first_6([H1,H2,H3,H4,H5,H6|_],[H1,H2,H3,H4,H5,H6]).
 add_12(Res,12,Res):-!.
 add_12(Str,N,Res):-N1 is N+1,append(Str,[111],Str1),add_12(Str1,N1,Res).
 
+/*Задание 14*/
+
+prExc14:-read_str(A,_),count_numb(A,0,Count),write(Count).
+
+count_numb([],Count,Count):-!.
+count_numb([H|T],I,Count):-H>=48,H=<57->I1 is I+1,count_numb(T,I1,Count);count_numb(T,I,Count).
+
 /*Задание 15*/
 
 prExc15:-read_str(A,_),only_abc(A),write("The string includes only a,b and c").
