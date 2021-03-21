@@ -215,3 +215,14 @@ del_x([],Res,Res):-!.
 del_x([H1,H2,H3,H4|Tail],I,Res):-check_x(H1,H2,H3,H4)->append(I,[97,98,99],I1),del_x(Tail,I1,Res);append(I,[H1],I1),del_x([H2,H3,H4|Tail],I1,Res).
 
 check_x(H1,H2,H3,H4):-H1 =:= 120,H2 =:= 97,H3 =:= 98,H4 =:= 99.
+
+/*Задание 18*/
+
+prExc18:-read_str(A,_),del_abc(A,[],Res),name(A_n,Res),write(A_n).
+
+
+del_abc([H2,H3,H4],I,Res):-append(I,[H2,H3,H4],Res),!.
+del_abc([],Res,Res):-!.
+del_abc([H1,H2,H3,H4|Tail],I,Res):-check_del_abc(H1,H2,H3,H4)->append(I,[H4],I1),del_abc(Tail,I1,Res);append(I,[H1],I1),del_abc([H2,H3,H4|Tail],I1,Res).
+
+check_del_abc(H1,H2,H3,H4):-H1 =:= 97,H2 =:= 98,H3 =:= 99,H4>=48,H4=<57.
