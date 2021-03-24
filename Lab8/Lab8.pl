@@ -32,3 +32,12 @@ max([_|T], CurMax, X):- max(T, CurMax, X).
 
 in_list([El|_],El).
 in_list([_|T],El):-in_list(T,El).
+
+prExc1_2:-  see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List), seen, string_space(List,0,Num),nl,write(Num).
+
+string_space([],Num,Num):-!.
+string_space([H|T],Num,Space):-(count_space(H)->name(H1,H), write(H1),nl,Num1 is Num+1,string_space(T,Num1,Space);string_space(T,Num,Space)).
+
+count_space([]):-!.
+count_space([H|_]):-H is 32,!,fail.
+count_space([_|T]):-count_space(T).
