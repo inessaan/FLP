@@ -41,3 +41,21 @@ string_space([H|T],Num,Space):-(count_space(H)->name(H1,H), write(H1),nl,Num1 is
 count_space([]):-!.
 count_space([H|_]):-H is 32,!,fail.
 count_space([_|T]):-count_space(T).
+
+prExc1_3:- see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List),seen,
+    count_A(List,[],ListCount),average(ListCount,Ave),more_a(List,Ave).
+
+count_A([],List_Count,List_Count):-!.
+count_A([H|T],I,List_Count):-a_str(H,0,Count_A),append(I,[Count_A],NI),
+    count_A(T,NI,List_Count).
+
+a_str([],N,N):-!.
+a_str([H|T],I,N):-(H is 65->NI is I+1,a_str(T,NI,N);a_str(T,I,N)).
+
+average(Count,Ave):-average(Count,0,Sum,0,N),Ave is Sum/N.
+average([],Sum,Sum,N,N):-!.
+average([H|T],I_Sum,Sum,I_N,N):-Sum1 is I_Sum+H,N1 is I_N+1, average(T,Sum1,Sum,N1,N).
+
+more_a([],_):-!.
+more_a([H|T],Ave):-a_str(H,0,CountA),(CountA>Ave->name(H1,H),writeln(H1),more_a(T,Ave);more_a(T,Ave)).
+
