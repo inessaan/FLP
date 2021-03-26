@@ -124,3 +124,21 @@ get_word([],Word,Word,[]).
 get_word([32|T],Word,Word,T):-!.
 get_word([H|T],W,Word,New_Str_after_word):-append(W,[H],W1),
     get_word(T,W1,Word,New_Str_after_word).
+
+/*Задание 1.5*/
+
+prExc1_5:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List), seen, words_all_str(List,[],AllWords),not_repeat(AllWords,UniqueWords), tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),no_incidence(List,UniqueWords),told.
+
+no_incidence([],_):-!.
+no_incidence([H|T],UniqueWords):-(get_words(H,WordsHead), coin_str(WordsHead,UniqueWords)->write_str(H),nl, no_incidence(T,UniqueWords);no_incidence(T,UniqueWords)).
+
+coin_str([],_):-!.
+coin_str([H|T],UniqueWords):-in_list(UniqueWords,H),coin_str(T,UniqueWords).
+
+del(_,[],[]):-!.
+del(H,[H|T],Res):-del(H,T,Res),!.
+del(H,[H1|T],[H1|Res]):-not(H=H1),del(H,T,Res).
+
+not_repeat([],[]):-!.
+not_repeat([H|T],[H|Res]):-not(in_list(T,H)), not_repeat(T,Res),!.
+not_repeat([H|T],Res):-del(H,T,H1),not_repeat(H1,Res).
