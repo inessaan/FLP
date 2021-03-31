@@ -240,3 +240,13 @@ prExc19:-read_str(A,_),count_aba(A,0,Count),write(Count).
 count_aba([],Count, Count):-!. 
 count_aba([97,98,97|T],N,Count):-N1 is N+1 ,count_aba(T,N1,Count),!. 
 count_aba([_|T],N,Count):- count_aba(T,N,Count).
+
+/*Задание 22*/
+
+prExc22:-read_str(String,Length),fme(String),fme(String,Length).
+
+fme([H|T]):-write("First = "),put(H),nl,reverse([H|T],_),write("End = "),put(HR),nl.
+fme(List,Length):-not(0 is Length mod 2),L is Length div 2+1,index(List,El,L,0),write("Middle = "),put(El),!.
+
+index([H|T],El,Num):-index([H|T],El,Num,0).
+index([H|T],El,Num,N):-N1 is N+1,(H = El,Num = N1 -> !;index(T,El,Num,N1)).
