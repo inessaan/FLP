@@ -168,3 +168,24 @@ d([H|T],[H1|T1]):-(H1>9->date(H, H1), d(T,T1); d(T, T1)).
 date([],_):-!. 
 date(_, L):-L<10,!. 
 date([H1, H2, H3, H4, H5, H6, H7, H8, H9, H10|T], L):-(H1>47, H1<52, H2>47,H2<58, H3==46, H4>47,H4<50, H5>47,H5<58, H6==46, H7>47, H7<58, H8>47, H8<58,H9>47,H9<58, H10>47, H10<58-> put(H1), put(H2), put(H3), put(H4), put(H5), put(H6), put(H7), put(H8), put(H9), put(H10),nl,L1 is L-10, date(T, L1); L1 is L - 1,date([H2, H3, H4, H5, H6, H7, H8, H9, H10|T], L-1)).
+
+/*Задание 3*/ 
+ 
+prExc3:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_str(List,_,1),seen,append(List,[32],A1),date_time(A1). 
+ 
+date_time([]):-!. 
+date_time([32|Tail]):-date_time(Tail),!. 
+date_time([Head|Tail]):-(day([Head|Tail],[],Day,After_Day)->(month(After_Day,[],Month,After_Month)->(year(After_Month,[],Year,After_Year)-> 
+write_str(Day),write(" "),write_str(Month),write(" "),write_str(Year),nl,date_time(After_Year);date_time(After_Month)); date_time(After_Day));date_time(Tail)). 
+ 
+day([32|Tail],Day,Day,Tail):-!. 
+day([Head|Tail],I,Day,After_Day):-Head >=48,Head =<57,append(I,[Head],I1),day(Tail,I1,Day,After_Day),!. 
+day([_|_],_,_,_):-!,false. 
+ 
+month([32|Tail],Month,Month,Tail):-!. 
+month([Head|Tail],I,Month,After_Month):-Head >=97,Head =<122,append(I,[Head],I1),month(Tail,I1,Month,After_Month),!. 
+month([_|_],_,_,_):-!,false. 
+ 
+year([32|Tail],Year,Year,Tail):-!. 
+year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!. 
+year([_|_],_,_,_):-!,false.
