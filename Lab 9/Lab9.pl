@@ -80,3 +80,15 @@ to_free_pos([H1,H2,H3,H4,H5],Sim):-(var(H1)->H1 is Sim),!;
 (var(H3)->H3 is Sim),!;
 (var(H4)->H4 is Sim),!;
 (var(H5)->H5 is Sim).
+
+/*Задание 3*/
+
+two_a_razm:-tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),not(two_a_razm_), nl, told.
+two_a_razm_:-make_ar(5,Pos),sochet(Pos_a,2,Pos),put_pos(Word,Pos_a,[97]),
+in_list_exlude([98,99,100,101,102],S1,NList),
+to_free_pos(Word,S1),
+in_list_exlude(NList,S2,NList1),
+to_free_pos(Word,S2),
+in_list_exlude(NList1,S3,NList2),
+to_free_pos(Word,S3),
+write_str(Word),nl,fail.
