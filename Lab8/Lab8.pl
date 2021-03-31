@@ -142,3 +142,18 @@ del(H,[H1|T],[H1|Res]):-not(H=H1),del(H,T,Res).
 not_repeat([],[]):-!.
 not_repeat([H|T],[H|Res]):-not(in_list(T,H)), not_repeat(T,Res),!.
 not_repeat([H|T],Res):-del(H,T,H1),not_repeat(H1,Res).
+
+/*Задание 2.1*/
+
+prExc2_1:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_str(List, _, _),seen,rus(List,0,C), write(C).
+
+rus([],C,C):-!.
+rus([H|T], Count, C):-((H>1039, H<1104)->Count1 is Count + 1, rus(T, Count1, C); rus(T, Count, C)).
+ 
+/*Задание 2.9*/
+
+prExc2_9:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_str(List,N,1),reverse(List,B),N1 is N div 2, palindrome(List, B, N1),seen.
+
+palindrome([_|_],[_|_],0):-!.
+palindrome([H1|T1],[H2|T2], I):-H1=H2,I1 is I-1, palindrome(T1,T2, I1),!.
+palindrome([_|_],[_|_],_):-fail,!.
