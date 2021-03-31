@@ -51,3 +51,32 @@ sochet([],0,_):-!.
 sochet([H|Sub_set],K,[H|Set]):-K1 is K-1,sochet(Sub_set,K1,Set). 
 sochet(Sub_set,K,[_|Set]):-sochet(Sub_set,K,Set). 
 pr_sochet:-read_str(A,N),read(K),sochet(B,K,A),write_str(B),nl,fail.
+
+/*Задание 2*/
+
+make_ar(0,[]):-!.
+make_ar(K,[K|Tail]):-K1 is K-1,make_ar(K1,Tail).
+
+two_a_razm_p:-tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),not(two_a_razm_P),nl,told.
+two_a_razm_P:-make_ar(5,Pos),sochet(Pos_a,2,Pos),put_pos(Word,Pos_a,[97]),
+in_list([98,99,100,101,102],S1),
+to_free_pos(Word,S1),
+in_list([98,99,100,101,102],S2),
+to_free_pos(Word,S2),
+in_list([98,99,100,101,102],S3),
+to_free_pos(Word,S3),
+write_str(Word),nl,fail.
+put_pos(Word,[H1,H2],[Sim]):-select_pos(Word,H1,Sim),
+select_pos(Word,H2,Sim).
+
+select_pos(Word,H,Sim):-(H is 1->Word=[Sim,_,_,_,_],!),
+(H is 2->Word=[_,Sim,_,_,_],!);
+(H is 3->Word=[_,_,Sim,_,_],!);
+(H is 4->Word=[_,_,_,Sim,_],!);
+(H is 5->Word=[_,_,_,_,Sim]).
+
+to_free_pos([H1,H2,H3,H4,H5],Sim):-(var(H1)->H1 is Sim),!;
+(var(H2)->H2 is Sim),!;
+(var(H3)->H3 is Sim),!;
+(var(H4)->H4 is Sim),!;
+(var(H5)->H5 is Sim).
