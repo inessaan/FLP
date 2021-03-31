@@ -233,3 +233,10 @@ del_abc([],Res,Res):-!.
 del_abc([H1,H2,H3,H4|Tail],I,Res):-check_del_abc(H1,H2,H3,H4)->append(I,[H4],I1),del_abc(Tail,I1,Res);append(I,[H1],I1),del_abc([H2,H3,H4|Tail],I1,Res).
 
 check_del_abc(H1,H2,H3,H4):-H1 =:= 97,H2 =:= 98,H3 =:= 99,H4>=48,H4=<57.
+
+/*Задание 19*/ 
+ 
+prExc19:-read_str(A,_),count_aba(A,0,Count),write(Count). 
+count_aba([],Count, Count):-!. 
+count_aba([97,98,97|T],N,Count):-N1 is N+1 ,count_aba(T,N1,Count),!. 
+count_aba([_|T],N,Count):- count_aba(T,N,Count).
