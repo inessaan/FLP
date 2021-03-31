@@ -157,3 +157,14 @@ prExc2_9:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_str(List,
 palindrome([_|_],[_|_],0):-!. 
 palindrome([H1|T1],[H2|T2], I):-H1=H2,I1 is I-1, palindrome(T1,T2, I1),!. 
 palindrome([_|_],[_|_],_):-fail,!.
+
+/*Задание 2.18*/ 
+ 
+prExc2_18:- see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List,N),seen, d(List,N). 
+ 
+d([],[]):-!. 
+d([H|T],[H1|T1]):-(H1>9->date(H, H1), d(T,T1); d(T, T1)). 
+ 
+date([],_):-!. 
+date(_, L):-L<10,!. 
+date([H1, H2, H3, H4, H5, H6, H7, H8, H9, H10|T], L):-(H1>47, H1<52, H2>47,H2<58, H3==46, H4>47,H4<50, H5>47,H5<58, H6==46, H7>47, H7<58, H8>47, H8<58,H9>47,H9<58, H10>47, H10<58-> put(H1), put(H2), put(H3), put(H4), put(H5), put(H6), put(H7), put(H8), put(H9), put(H10),nl,L1 is L-10, date(T, L1); L1 is L - 1,date([H2, H3, H4, H5, H6, H7, H8, H9, H10|T], L-1)).
