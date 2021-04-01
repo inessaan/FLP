@@ -15,6 +15,8 @@ read_list_str(List,List,1):-!.
 read_list_str(Cur_list,List,0):-
 	read_str(A,_,Flag),append(Cur_list,[A],C_l),read_list_str(C_l,List,Flag).
 
+append1([],List2,List2).
+append1([H1|T1],List2,[H1|T3]):-append1(T1,List2,T3).
 
 pr:- see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List), seen, write_list_str(List),tell('C:/Users/Инесса/Desktop/ФиЛП/input.txt'), write_list_str(List),told.
 
@@ -189,3 +191,19 @@ month([_|_],_,_,_):-!,false.
 year([32|Tail],Year,Year,Tail):-!. 
 year([Head|Tail],I,Year,After_Year):-Head >=48,Head =<57,append(I,[Head],I1),year(Tail,I1,Year,After_Year),!. 
 year([_|_],_,_,_):-!,false.
+
+/*Задание 5*/
+
+prExc5:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(List,N),seen,regul(List, N,[]).
+regul([],[],A):-write_list_str(A),!.
+
+regul([H|T],[HL|TL],A):-Max =HL, Max_str=H, regul1([H|T],[HL|TL], Max, Max_str, String, Num),append(A,[String],B),remove_str([H|T], String, List),remove_str([HL|TL], Num, ListL), regul(List, ListL,B),!.
+
+regul1([],[], Max, Max_str,Max_str, Max):-!.
+regul1([H|T], [HL|TL], Max, Max_str, Str,Num):- (HL>Max-> Max1 = HL, Max_str1 = H,regul1(T, TL, Max1, Max_str1, Str,Num); regul1(T, TL, Max, Max_str,Str,Num)).
+
+remove_str([H|T], X, List):-remove_str([H|T],[],List,X, 1).
+remove_str([],List,List,_,_):-!.
+remove_str([H|T], Temp, List, X, 1):-(H=X-> remove_str(T, Temp,List,X, 0)),!.
+remove_str([H|T], Temp, List, X, 1):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
+remove_str([H|T], Temp, List, X, 0):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
