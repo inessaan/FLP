@@ -92,3 +92,15 @@ to_free_pos(Word,S2),
 in_list_exlude(NList1,S3,NList2),
 to_free_pos(Word,S3),
 write_str(Word),nl,fail.
+
+/*Задание 4*/
+
+two_s_razm:-tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),not(two_s_razm_),told.
+two_s_razm_:-make_ar(5,Pos),sochet(Pos_s,2,Pos),in_list([97,98,99,100,101,102],Simbol),put_pos(Word,Pos_s,[Simbol]),in_list_exlude([97,98,99,100,101,102],Simbol,List),
+		 in_list_exlude(List,S1,NList),
+		 to_free_pos(Word,S1),
+		 in_list_exlude(NList,S2,NList1),
+		 to_free_pos(Word,S2),
+		 in_list_exlude(NList1,S3,NList2),
+		 to_free_pos(Word,S3),
+		 write_str(Word),nl,fail.
