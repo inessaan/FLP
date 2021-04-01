@@ -234,3 +234,16 @@ sort1([First, Second|Tail], [First|ListWithMaxEnd],[FirstStr, SecondStr|TailStr]
 
 bubble_sort(SortedList, SortedList,SortedList_Str,SortedList_Str):- sort1(SortedList, DoubleSortedList,SortedList_Str,DoubleSortedList_Str),SortedList = DoubleSortedList,SortedList_Str = DoubleSortedList_Str,!.
 bubble_sort(List, SortedList,List_Str,SortedList_Str):-sort1(List, SortedPart,List_Str,SortedPart_List_Str),bubble_sort(SortedPart, SortedList,SortedPart_List_Str,SortedList_Str).
+
+/*Задание 7*/
+
+prExc7:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(A), seen,tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),list_word_after_digit(A,[],List_Word),bubble_sort(List_Word,_,A,Sorted_A),write_sort(Sorted_A),told.
+
+list_word_after_digit([],Res,Res):-!.
+list_word_after_digit([Head|Tail],I,Res):-get_words(Head,Words),count_words_after_digit(Words,0,Count_Words),append(I,[Count_Words],I1),list_word_after_digit(Tail,I1,Res).
+
+count_words_after_digit([_],Count_Words,Count_Words):-!.
+count_words_after_digit([Head|Tail],I,Count_Words):-count_digit(Head,0,Count_Digit),(Count_Digit>0->I1 is I+1,count_words_after_digit(Tail,I1,Count_Words);count_words_after_digit(Tail,I,Count_Words)).
+
+count_digit([],Count,Count):-!.
+count_digit([Head|Tail],I,Count):-Head>=48,Head=<57->I1 is I+1,count_digit(Tail,I1,Count);count_digit(Tail,I,Count).
