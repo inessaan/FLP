@@ -207,3 +207,30 @@ remove_str([],List,List,_,_):-!.
 remove_str([H|T], Temp, List, X, 1):-(H=X-> remove_str(T, Temp,List,X, 0)),!.
 remove_str([H|T], Temp, List, X, 1):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
 remove_str([H|T], Temp, List, X, 0):-append1(Temp,[H], Temp1), remove_str(T, Temp1, List, X,1).
+
+/*Задание 6*/
+
+prExc6:-see('C:/Users/Инесса/Desktop/ФиЛП/input.txt'),read_list_str(A), seen,tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),list_word(A,[],List_Word),bubble_sort(List_Word,_,A,Sorted_A),write_sort(Sorted_A),told.
+
+list_word([],Res,Res):-!.
+list_word([Head|Tail],I,Res):-get_words(Head,Words),lenght(Words,Count_Words),append(I,[Count_Words],I1),list_word(Tail,I1,Res).
+
+write_sort([]):-!.
+write_sort([Head|Tail]):-name(Head1,Head),write(Head1),nl,write_sort(Tail).
+
+lenght([],L,L):-!.
+lenght([_|Tail],I,L):-I1 is I+1,lenght(Tail,I1,L).
+lenght(List,L):-lenght(List,1,L).
+
+list_lenght([],Res,Res):-!.
+list_lenght([Head|Tail],I,Res):-lenght(Head,Lenght_Head),append(I,[Lenght_Head],I1),list_lenght(Tail,I1,Res).
+
+
+sort1([], [],[],[]):-!.
+sort1([Head], [Head],[HeadStr],[HeadStr]):-!.
+sort1([First, Second|Tail], [Second|ListWithMaxEnd],[FirstStr, SecondStr|TailStr],[SecondStr|ListWithMaxEndStr]):-First > Second, !, sort1([First|Tail], ListWithMaxEnd,[FirstStr|TailStr],ListWithMaxEndStr).
+sort1([First, Second|Tail], [First|ListWithMaxEnd],[FirstStr, SecondStr|TailStr], [FirstStr|ListWithMaxEndStr]):-sort1([Second|Tail], ListWithMaxEnd,[SecondStr|TailStr], ListWithMaxEndStr).
+
+
+bubble_sort(SortedList, SortedList,SortedList_Str,SortedList_Str):- sort1(SortedList, DoubleSortedList,SortedList_Str,DoubleSortedList_Str),SortedList = DoubleSortedList,SortedList_Str = DoubleSortedList_Str,!.
+bubble_sort(List, SortedList,List_Str,SortedList_Str):-sort1(List, SortedPart,List_Str,SortedPart_List_Str),bubble_sort(SortedPart, SortedList,SortedPart_List_Str,SortedList_Str).
