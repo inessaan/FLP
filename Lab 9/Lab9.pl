@@ -221,3 +221,23 @@ to_free_pos9([H1,H2,H3,H4,H5,H6,H7,H8,H9],Sim):-(var(H1)->H1 is Sim),!;
 				  (var(H7)->H7 is Sim),!;
 				  (var(H8)->H8 is Sim),!;
 				  (var(H9)->H9 is Sim).
+/*Задание 8*/
+
+prExc8:-tell('C:/Users/Инесса/Desktop/ФиЛП/output.txt'),write_str([[97],[97],[97],[97]]),nl,not(prExc8_),told.
+
+prExc8_:- make_ar(4,Pos),in_list(Pos,Index),in_list([98,99,100,101,102],Simbol1),put_pos4(Word,[Index],[Simbol1]), in_list_exlude([98,99,100,101,102],Simbol1,List), %убрали символ b-f
+		 to_free_pos4(Word,[97]),% поставили 1a
+		 to_free_pos4(Word,[97]),% поставили 2a
+		 to_free_pos4(Word,[97]),% поставили 3a
+		 write_str(Word),nl,fail.
+
+put_pos4(Word,[Head1],[Sim]):-select_pos4(Word,Head1,Sim).
+select_pos4(Word,Head,Sim):-     (Head is 1->Word=[Sim,_,_,_],!);
+				 (Head is 2->Word=[_,Sim,_,_],!);
+				 (Head is 3->Word=[_,_,Sim,_],!);
+				 (Head is 4->Word=[_,_,_,Sim],!).
+
+to_free_pos4([H1,H2,H3,H4],Sim):-(var(H1)->H1 is Sim),!;
+				  (var(H2)->H2 is Sim),!;
+				  (var(H3)->H3 is Sim),!;
+                  (var(H4)->H4 is Sim).
